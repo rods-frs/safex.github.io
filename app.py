@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import csv
-from datetime import datetime
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
@@ -13,14 +12,14 @@ def create_user():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        # Count current users
+        # Count current users (skip header)
         number_of_users = 0
         with open('users.csv', newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
             next(reader, None)  # Skip header
             for _ in reader:
                 number_of_users += 1
-        number_of_users += 1  # New user
+        number_of_users += 1  # New user number
         with open('users.csv', 'a', newline='', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([number_of_users, username, password])
