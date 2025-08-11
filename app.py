@@ -8,13 +8,7 @@ def home():
 
 @app.route('/usercreation')
 def user_creation():
-    return render_template_string('''
-        <form action="/create_user" method="post">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Create User</button>
-        </form>
-    ''')
+    return render_template('usercreation.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
