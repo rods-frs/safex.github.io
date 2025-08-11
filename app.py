@@ -12,15 +12,14 @@ def create_user():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        # Count current users (skip header)
         number_of_users = 0
         with open('users.csv', newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
-            next(reader, None)  # Skip header
+            next(reader, None)
             for _ in reader:
                 number_of_users += 1
         number_of_users += 1  # New user number
-        with open('users.csv', 'a', newline='', encoding='utf-8') as csvfile:
+        with open('/home/rodsfrs/safex.github.io/safex/safex/users.csv', 'a', newline='', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([number_of_users, username, password])
         return f"Submitted Username: {username}, Password: {password}, User Number: {number_of_users}"
