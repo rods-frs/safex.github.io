@@ -6,9 +6,9 @@ app = Flask(__name__, static_folder='static', template_folder='templates')
 def home():
     return render_template('index.html')
 
-@app.route('/usercreation')
+@app.route('/create_user')
 def user_creation():
-    return render_template('usercreation.html')
+    return render_template('create_user.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
