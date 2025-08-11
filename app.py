@@ -13,5 +13,5 @@ def create_user():
         password = request.form.get('password')
         # Do not display the password in production! This is just for demonstration.
         return f"Submitted Username: {username}, Password: {password}"
-    return render_template('usercreation.html')
+    return render_template('create_user.html')
 
